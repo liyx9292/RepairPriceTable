@@ -13,6 +13,9 @@ export default {
 }
 </script>
 <style scoped>
-
+.layout {
+  padding-top: 1rem;
+  box-sizing: border-box;
+}
 </style>
 

@@ -26,7 +26,7 @@
         {{selectSubtext}}价格明细表
       </div>
       <div class="table" v-html='tableContent' />
-      <div class="tablebtn">返回</div>
+      <div class="tablebtn" @click="back">返回</div>
     </div>
   </div>
 </template>
@@ -61,10 +61,15 @@ export default {
       this.selectSubtext = item.name
       this.RequestTable(item.gplId)
     },
+    back() {
+      this.showTable = false
+      this.selectSubtext = ''
+      this.tableContent = ''
+    },
     RequestTable(id) {
       GetTable(id)
         .then(res => {
-          this.tableContent = res.data.data
+          this.tableContent = res.data.data.content
         })
     },
     handleArr(arr) {
@@ -129,12 +134,12 @@ export default {
     }
   }
   &-itemAct {
-    background: #f2f0f0;
+    background: #F8F8F8;
   }
   // 子菜单
   &-sub {
     width: 100%;
-    background: #f2f0f0;
+    background: #F8F8F8;
     padding: 0 0.5rem;
     box-sizing: border-box;
     .subblocks {
@@ -166,11 +171,12 @@ export default {
   width: 100%;
   height: 100vh;
   background: #fff;
+  margin-top: -1rem;
   .tableTitle {
     font-size: 0.5rem;
     color: #292D33;
     text-align: center;
-    margin-top: 0.5rem;
+    padding-top: 0.5rem;
     margin-bottom: 0.8rem;
   }
   .tablebtn {
@@ -183,6 +189,14 @@ export default {
     text-align: center;
     margin: 0 auto;
     font-size: 0.4rem;
+    margin-top: 0.5rem;
+  }
+  .table {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  table {
+    width: 100% important;
   }
 }
 </style>

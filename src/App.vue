@@ -34,7 +34,7 @@ export default {
 }
 table {
   width: 100% !important;
-  border: 2px solid #ccc !important;
+  border: 2px solid #DCDDE0 !important;
   border-radius: 10px;
   overflow: hidden;
 }
@@ -48,12 +48,14 @@ tbody tr:first-child {
 tbody tr:first-child td{
   color: #212121 !important;
   font-size: 0.4rem !important;
+  border: unset !important;
 }
 tbody tr:first-child td {
   border-top: unset !important;
 }
 tr td {
   font-size: 0.3rem;
+  padding: 0.4rem 0;
 }
 tr td:last-child {
   color: #FD9E47;
@@ -61,11 +63,20 @@ tr td:last-child {
 }
 td {
     width: 33% !important;
-    border: 1px solid #ccc !important;
+    border: 1px solid #DCDDE0 !important;
     border-left: unset !important;
-    border-bottom: unset !important;
+    border-top: unset !important;
     box-sizing: border-box;
     font-size: 0.34rem;
     text-align: center;
+}
+tbody tr:last-child td{
+  border-bottom: unset !important;
+}
+tr td:first-child {
+  width: 18% !important;
+}
+tr td:last-child {
+  width: 18% !important;
 }
 </style>

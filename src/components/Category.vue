@@ -1,12 +1,12 @@
 <template>
   <div class="categorys" >
-    <div class="categoryblock" v-if="!showTable">
+    <div class="categoryblock">
       <div class="categorys-bar" v-for="(categorysArr, index) in categorys" :key="index">
         <!-- 一条4个选项 -->
         <div @click="selectSub(item, index, itx)"
           :class="['categorys-item', showSub[0] === index && showSub[1] === itx ? 'categorys-itemAct': '']" 
           v-for="(item, itx) in categorysArr" :key="itx">
-          <img class="categorys-item-img" :src="item.image"/>
+          <img class="categorys-item-img" :src="showSub[0] === index && showSub[1] === itx ? item.imageTwo : item.image"/>
           <div class="categorys-item-text">{{item.name}}</div>
         </div>
         <!-- 二级菜单 -->
@@ -26,7 +26,7 @@
         {{selectSubtext}}价格明细表
       </div>
       <div class="table" v-html='tableContent' />
-      <div class="tablebtn" @click="back">返回</div>
+      <!-- <div class="tablebtn" @click="back">返回</div> -->
     </div>
   </div>
 </template>
@@ -103,11 +103,11 @@ export default {
 <style lang="less" scoped>
 .categorys {
   width: 100%;
-  background: #fff;
-  box-sizing: border-box;
-  padding: 0 0.45rem;
   .categoryblock {
     width: 100%;
+    box-sizing: border-box;
+    padding: 0 0.45rem;
+    background: #fff;
   }
   &-bar {
     width: 100%;
@@ -169,15 +169,17 @@ export default {
 }
 .tableView {
   width: 100%;
-  height: 100vh;
   background: #fff;
-  margin-top: -1rem;
+  box-sizing: border-box;
+  padding: 0 0.45rem;
+  margin-top: 1rem;
+  padding-bottom: 1rem;
   .tableTitle {
     font-size: 0.5rem;
     color: #292D33;
     text-align: center;
     padding-top: 0.5rem;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.4rem;
   }
   .tablebtn {
     width: 80%;
